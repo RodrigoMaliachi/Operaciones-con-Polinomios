@@ -8,7 +8,7 @@ public class ListaDoble extends ListaD{
     private int cantidadElementos;
 
     
-    
+    //knffjnwefew
     public int getCantidadElementos() {
         return cantidadElementos;
     }
