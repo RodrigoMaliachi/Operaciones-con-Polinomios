@@ -5,9 +5,8 @@ import Modelo.Polinomio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import org.controlsfx.control.action.Action;
 
-public class ingresoPolinomiosController {
+public class PolinomiosController {
     private ListaDoble lista = new ListaDoble();
     private ListaDoble listaDos = new ListaDoble();
     private Polinomio pol1 = new Polinomio();
