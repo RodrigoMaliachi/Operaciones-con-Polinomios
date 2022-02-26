@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uady.operacionesconpolinomios.ingresoPolinomiosController">
    <children>
       <Button layoutX="23.0" layoutY="345.0" mnemonicParsing="false" onAction="#onButtonClick" text="Sumar" />
@@ -14,11 +13,11 @@
       <Button layoutX="212.0" layoutY="345.0" mnemonicParsing="false" text="Multiplicar" />
       <Button layoutX="310.0" layoutY="345.0" mnemonicParsing="false" text="Multiplicar por escalar" />
       <TextField fx:id="TextField1" layoutX="23.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="104.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="185.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="264.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="346.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="443.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField2" layoutX="104.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField3" layoutX="185.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField4" layoutX="264.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField5" layoutX="346.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField6" layoutX="443.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
       <Label layoutX="54.0" layoutY="44.0" prefHeight="39.0" prefWidth="31.0" text="x">
          <font>
             <Font size="27.0" />
@@ -79,18 +78,18 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <TextField layoutX="536.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField7" layoutX="536.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
       <Label layoutX="496.0" layoutY="45.0" text="+">
          <font>
             <Font size="27.0" />
          </font>
       </Label>
-      <TextField layoutX="23.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="104.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="185.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="264.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="346.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField layoutX="443.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField8" layoutX="23.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField9" layoutX="104.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField10" layoutX="185.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField11" layoutX="264.0" layoutY="137.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField12" layoutX="346.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField13" layoutX="443.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
       <Label layoutX="54.0" layoutY="129.0" prefHeight="39.0" prefWidth="31.0" text="x">
          <font>
             <Font size="27.0" />
@@ -151,7 +150,7 @@
             <Font size="27.0" />
          </font>
       </Label>
-      <TextField layoutX="536.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
+      <TextField fx:id="TextField14" layoutX="536.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
       <Label layoutX="496.0" layoutY="130.0" text="+">
          <font>
             <Font size="27.0" />
@@ -160,5 +159,6 @@
       <Button layoutX="489.0" layoutY="345.0" mnemonicParsing="false" text="Limpiar" />
       <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="80.0" text="Polinomio 1" />
       <Label layoutX="16.0" layoutY="102.0" text="Polinomio 2" />
+      <Button layoutX="239.0" layoutY="294.0" mnemonicParsing="false" onAction="#guardarPoli" text="Guardas polinomios" />
    </children>
 </AnchorPane>
