@@ -77,6 +77,20 @@ public class ingresoPolinomiosController {
 
     }
 
+    public void botonResta(ActionEvent actionEvent) {
+        pol1.restarPolinomios(lista, listaDos,7);
+
+    }
+
+    public void botonMultiplicar(ActionEvent actionEvent) {
+        pol1.multiplicarPolinomios(lista, listaDos);
+
+    }
+
+    public void botonEscalar(ActionEvent actionEvent) {
+        pol1.multiplicarEscalarPolinomios(lista, 7);
+
+    }
 
 
 }

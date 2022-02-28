@@ -9,9 +9,9 @@
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uady.operacionesconpolinomios.ingresoPolinomiosController">
    <children>
       <Button layoutX="23.0" layoutY="345.0" mnemonicParsing="false" onAction="#onButtonClick" text="Sumar" />
-      <Button layoutX="122.0" layoutY="345.0" mnemonicParsing="false" text="Restar" />
-      <Button layoutX="212.0" layoutY="345.0" mnemonicParsing="false" text="Multiplicar" />
-      <Button layoutX="310.0" layoutY="345.0" mnemonicParsing="false" text="Multiplicar por escalar" />
+      <Button layoutX="122.0" layoutY="345.0" mnemonicParsing="false" onAction="#botonResta" text="Restar" />
+      <Button layoutX="212.0" layoutY="345.0" mnemonicParsing="false" onAction="#botonMultiplicar" text="Multiplicar" />
+      <Button layoutX="310.0" layoutY="345.0" mnemonicParsing="false" onAction="#botonEscalar" text="Multiplicar por escalar" />
       <TextField fx:id="TextField1" layoutX="23.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
       <TextField fx:id="TextField2" layoutX="104.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
       <TextField fx:id="TextField3" layoutX="185.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" />
@@ -159,6 +159,6 @@
       <Button layoutX="489.0" layoutY="345.0" mnemonicParsing="false" text="Limpiar" />
       <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="80.0" text="Polinomio 1" />
       <Label layoutX="16.0" layoutY="102.0" text="Polinomio 2" />
-      <Button layoutX="239.0" layoutY="294.0" mnemonicParsing="false" onAction="#guardarPoli" text="Guardas polinomios" />
+      <Button layoutX="239.0" layoutY="294.0" mnemonicParsing="false" onAction="#guardarPoli" text="Guardar polinomios" />
    </children>
 </AnchorPane>
