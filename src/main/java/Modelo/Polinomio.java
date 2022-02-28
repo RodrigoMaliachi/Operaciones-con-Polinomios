@@ -80,7 +80,7 @@ public class Polinomio {
         return auxLista;
     }
 
-    //a
+    //prueba2
 
     public void multiplicarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos){
         NodoDoble poliUno, poliDos;
