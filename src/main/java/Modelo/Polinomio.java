@@ -79,7 +79,9 @@ public class Polinomio {
         auxLista.imprimir();  
         return auxLista;
     }
-    
+
+    //a
+
     public void multiplicarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos){
         NodoDoble poliUno, poliDos;
         ListaDoble pol1 = new ListaDoble();
