@@ -23,16 +23,18 @@ public abstract class Listaa {
         return inicio == null;
     }
     
-    public void imprimir(){
+    public String imprimir(){
+        String impresion="";
         Nodo actual = inicio;
         while(actual != null){
             if(actual==ultimo){
-                System.out.println(actual.getDato());
+                impresion+=actual.getDato();
             }else{
-                System.out.print(actual.getDato()+"->"); 
+                impresion+=actual.getDato()+"+";
             }
             actual = actual.getSiguiente();
         }
+        return impresion;
     }
     
     public abstract void insertaInicio (Polinomio dato);
