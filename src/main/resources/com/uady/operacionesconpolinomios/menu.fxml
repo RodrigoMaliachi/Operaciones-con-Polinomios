@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane fx:id="borderPane" maxWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uady.operacionesconpolinomios.Menu">
+    <top>
+       <ToolBar prefHeight="40.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+           <Button mnemonicParsing="false" onAction="#changeToPolinomiosView" text="Polinomio" />
+           <Button mnemonicParsing="false" onAction="#changeToEscalarView" text="Escalar" />
+       </ToolBar>
+   </top>
+</BorderPane>

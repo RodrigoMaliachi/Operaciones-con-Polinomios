@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox alignment="CENTER_RIGHT" maxWidth="1.7976931348623157E308" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uady.operacionesconpolinomios.EscalarController">
+   <children>
+      <Label text="Polinomio">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <HBox alignment="CENTER_RIGHT">
+         <children>
+            <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x6" />
+            <Label text="x⁶+">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x5" />
+            <Label text="x⁵+">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x4" />
+            <Label text="x⁴+">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x3" />
+            <Label text="x³+">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x2" />
+            <Label text="x²+">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER_RIGHT" layoutX="170.0" layoutY="10.0" prefWidth="50.0" promptText="0" fx:id="x1" />
+            <Label layoutX="192.0" layoutY="10.0" text="x+">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField alignment="CENTER_RIGHT" layoutX="180.0" layoutY="10.0" prefWidth="50.0" promptText="0" fx:id="x0" />
+            <Label layoutX="196.0" layoutY="10.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <Label text="Escalar">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </Label>
+      <HBox alignment="CENTER_RIGHT">
+         <children>
+            <Label text="×">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <TextField prefWidth="50.0" />
+         </children>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </HBox>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <ImageView fitHeight="200.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
