@@ -46,8 +46,8 @@ public class Polinomio {
         }
         
     }
-    
-    public String sumarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos,int n){
+
+    public ListaDoble sumarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos,int n){
         int [] coeficientePolinomioUno = new int [n];
         int [] coeficientePolinomioDos = new int [n];
         ListaDoble auxLista = new ListaDoble();
@@ -79,7 +79,38 @@ public class Polinomio {
         return auxLista.imprimir();
     }
 
-    //prueba2
+    public ListaDoble restarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos,int n){
+        int [] coeficientePolinomioUno = new int [n];
+        int [] coeficientePolinomioDos = new int [n];
+        ListaDoble auxLista = new ListaDoble();
+
+        for(int i= 0; i<n ;i++){
+            coeficientePolinomioDos[i] = 0;
+            coeficientePolinomioUno[i] = 0;
+        }
+
+        NodoDoble actual = polinomioUno.inicio;
+        while(actual != null){
+            coeficientePolinomioUno[actual.getDato().getExponente()] = actual.getDato().getCoeficiente();
+            actual = actual.siguiente;
+        }
+        actual = polinomioDos.inicio;
+        while(actual != null){
+            coeficientePolinomioDos[actual.getDato().getExponente()] = actual.getDato().getCoeficiente();
+            actual = actual.siguiente;
+        }
+
+        for(int i= 0; i<n ;i++){
+            int acumulador;
+            acumulador = -1*(coeficientePolinomioDos[i]) + coeficientePolinomioUno[i];
+            if(acumulador != 0){
+                auxLista.insertaInicio(new Polinomio(acumulador,i));
+            }
+        }
+
+        auxLista.imprimir();
+        return auxLista;
+    }
 
     public void multiplicarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos){
         NodoDoble poliUno, poliDos;
@@ -101,6 +132,22 @@ public class Polinomio {
         System.out.println("\nSimplificado-------------------------------");
         SimplificarPolinomio(pol1,13);
     }
+
+    public void multiplicarEscalarPolinomios(ListaDoble polinomioUno, int escalar){
+        NodoDoble poliUno;
+        ListaDoble pol1 = new ListaDoble();
+
+        poliUno = polinomioUno.inicio;
+        while(poliUno != null){
+              int coeficien = poliUno.getDato().getCoeficiente()*escalar;
+              int exponen = poliUno.getDato().getExponente();
+              pol1.insertaInicio(new Polinomio(coeficien,exponen));
+            poliUno = poliUno.siguiente;
+        }
+        pol1.imprimir();
+
+    }
+
     
     public void SimplificarPolinomio(ListaDoble polinomioUno,int n){
          NodoDoble poliUno;

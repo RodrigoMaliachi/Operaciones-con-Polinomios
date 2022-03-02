@@ -80,6 +80,46 @@ public class ingresoPolinomiosController {
         formula.createPNG(TeXConstants.STYLE_DISPLAY,200,"Example.png", java.awt.Color.WHITE, java.awt.Color.BLACK);
     }
 
+    public void botonResta(ActionEvent actionEvent) {
+        pol1.restarPolinomios(lista, listaDos,7);
+
+    }
+
+    public void botonMultiplicar(ActionEvent actionEvent) {
+        pol1.multiplicarPolinomios(lista, listaDos);
+
+    }
+
+    public void botonEscalar(ActionEvent actionEvent) {
+        pol1.multiplicarEscalarPolinomios(lista, 7);
+
+    }
+
+    public void botonLimpiar(ActionEvent actionEvent) {
+       for(int i=0; i< lista.getCantidadElementos(); i++) {
+           lista.eliminaInicio();
+       }
+
+        for(int i=0; i< listaDos.getCantidadElementos(); i++) {
+            listaDos.eliminaInicio();
+        }
+
+        TextField1.setText("0");
+        TextField2.setText("0");
+        TextField3.setText("0");
+        TextField4.setText("0");
+        TextField5.setText("0");
+        TextField6.setText("0");
+        TextField7.setText("0");
+        TextField8.setText("0");
+        TextField9.setText("0");
+        TextField10.setText("0");
+        TextField11.setText("0");
+        TextField12.setText("0");
+        TextField13.setText("0");
+        TextField14.setText("0");
+
+    }
 
 
 }
