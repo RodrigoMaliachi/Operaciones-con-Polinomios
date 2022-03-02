@@ -5,9 +5,7 @@ import Modelo.Polinomio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.image.WritableImage;
 import javafx.scene.layout.VBox;
 import javafx.embed.swing.SwingFXUtils;
 import org.scilab.forge.jlatexmath.TeXConstants;
@@ -74,7 +72,7 @@ public class PolinomiosController {
 
             int coeficiente = Integer.parseInt( s.isBlank() ? "0" : s );
 
-            lista.insertarInicio(new Polinomio( coeficiente, i ));
+            lista.insertarInicio(new Polinomio( coeficiente, 6-i ));
         }
     }
 
@@ -110,20 +108,20 @@ public class PolinomiosController {
             listaDos.eliminarInicio();
         }
 
-        x1.setText("0");
-        x2.setText("0");
-        x3.setText("0");
-        x4.setText("0");
-        x5.setText("0");
-        x6.setText("0");
-        x0.setText("0");
-        y1.setText("0");
-        y2.setText("0");
-        y3.setText("0");
-        y4.setText("0");
-        y5.setText("0");
-        y6.setText("0");
-        y0.setText("0");
+        x1.setText("");
+        x2.setText("");
+        x3.setText("");
+        x4.setText("");
+        x5.setText("");
+        x6.setText("");
+        x0.setText("");
+        y1.setText("");
+        y2.setText("");
+        y3.setText("");
+        y4.setText("");
+        y5.setText("");
+        y6.setText("");
+        y0.setText("");
 
     }
 }
