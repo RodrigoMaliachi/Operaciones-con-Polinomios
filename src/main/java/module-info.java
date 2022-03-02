@@ -5,6 +5,7 @@ module com.uady.operacionesconpolinomios {
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
     requires jlatexmath;
+    requires java.desktop;
 
     opens com.uady.operacionesconpolinomios to javafx.fxml;
     exports com.uady.operacionesconpolinomios;

@@ -14,10 +14,18 @@ public abstract class ListaD extends Listaa{
     }
     
     @Override
-    public void imprimir(){
-        //Inicio hacia adelante
-        super.setInicio(inicio);
-        super.imprimir();
+    public String imprimir(){
+        String impresion="";
+        Nodo actual = inicio;
+        while(actual != null){
+            if(actual==ultimo){
+                impresion+=actual.getDato();
+            }else{
+                impresion+=actual.getDato()+"+";
+            }
+            actual = actual.getSiguiente();
+        }
+        return impresion;
     }
     
     

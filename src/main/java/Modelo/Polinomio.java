@@ -42,12 +42,12 @@ public class Polinomio {
         if(exponente == 0){
             return coeficiente+"";
         }else{
-            return coeficiente+"x^"+exponente;
+            return coeficiente+"x^{"+exponente+"}";
         }
         
     }
     
-    public ListaDoble sumarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos,int n){
+    public String sumarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos,int n){
         int [] coeficientePolinomioUno = new int [n];
         int [] coeficientePolinomioDos = new int [n];
         ListaDoble auxLista = new ListaDoble();
@@ -74,12 +74,13 @@ public class Polinomio {
             if(acumulador != 0){
                 auxLista.insertaInicio(new Polinomio(acumulador,i));
             }
-        }  
-        
-        auxLista.imprimir();  
-        return auxLista;
+        }
+
+        return auxLista.imprimir();
     }
-    
+
+    //prueba2
+
     public void multiplicarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos){
         NodoDoble poliUno, poliDos;
         ListaDoble pol1 = new ListaDoble();
@@ -99,7 +100,6 @@ public class Polinomio {
         pol1.imprimir();
         System.out.println("\nSimplificado-------------------------------");
         SimplificarPolinomio(pol1,13);
-         
     }
     
     public void SimplificarPolinomio(ListaDoble polinomioUno,int n){

@@ -2,10 +2,13 @@ package com.uady.operacionesconpolinomios;
 
 import Modelo.ListaDoble;
 import Modelo.Polinomio;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import org.controlsfx.control.action.Action;
+import org.scilab.forge.jlatexmath.TeXConstants;
+import org.scilab.forge.jlatexmath.TeXFormula;
 
 public class ingresoPolinomiosController {
     private ListaDoble lista = new ListaDoble();
@@ -72,9 +75,9 @@ public class ingresoPolinomiosController {
         listaDos.insertaInicio(new Polinomio(Integer.parseInt(TextField14.getText()),0));
     }
 
-    public void onButtonClick(ActionEvent actionEvent) {
-        pol1.sumarPolinomios(lista, listaDos,7);
-
+    public void onButtonClick(ActionEvent actionEvent){
+        TeXFormula formula = new TeXFormula(pol1.sumarPolinomios(lista, listaDos,7));
+        formula.createPNG(TeXConstants.STYLE_DISPLAY,200,"Example.png", java.awt.Color.WHITE, java.awt.Color.BLACK);
     }
 
 

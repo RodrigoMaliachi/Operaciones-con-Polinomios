@@ -21,7 +21,9 @@ public class Nodo {
         this.dato = dato;
         this.siguiente = siguiente;
     }
-    
+
+    //prueba3
+
     public Polinomio getDato(){
         return this.dato;
     }
