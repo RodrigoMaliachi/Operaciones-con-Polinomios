@@ -6,6 +6,7 @@ module com.uady.operacionesconpolinomios {
     requires org.kordamp.ikonli.javafx;
     requires jlatexmath;
     requires java.desktop;
+    requires javafx.swing;
 
     opens com.uady.operacionesconpolinomios to javafx.fxml;
     exports com.uady.operacionesconpolinomios;

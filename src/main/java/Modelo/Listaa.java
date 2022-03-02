@@ -5,12 +5,11 @@ package Modelo;
  * @author Jonatan, Natali, Rodrigro, Angélica
  */
 public abstract class Listaa {
-    protected  Nodo inicio;
-    protected  Nodo ultimo;
+    protected Nodo inicio;
+    protected Nodo ultimo;
     protected String nombre;
     
     public Listaa(){
-        //this.nombre = lista;
         this("lista");
     }
     
@@ -24,23 +23,23 @@ public abstract class Listaa {
     }
     
     public String imprimir(){
-        String impresion="";
+        StringBuilder impresion = new StringBuilder();
         Nodo actual = inicio;
-        while(actual != null){
-            if(actual==ultimo){
-                impresion+=actual.getDato();
-            }else{
-                impresion+=actual.getDato()+"+";
-            }
+        while (actual != null){
+            if (actual == ultimo)
+                impresion.append(actual.getDato());
+            else
+                impresion.append(actual.getDato()).append("+");
+
             actual = actual.getSiguiente();
         }
-        return impresion;
+        return impresion.toString();
     }
     
-    public abstract void insertaInicio (Polinomio dato);
+    public abstract void insertarInicio(Polinomio dato);
     public abstract void insertarFinal (Polinomio dato);
-    public abstract Object eliminaInicio();
-    public abstract Object eliminaFinal();
+    public abstract Object eliminarInicio();
+    public abstract Object eliminarFinal();
     public abstract void ordenarLista();
     
     public Nodo getInicio(){

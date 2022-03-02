@@ -8,21 +8,17 @@ public class NodoDoble extends Nodo {
     protected NodoDoble siguiente;
     protected NodoDoble anterior;
     
-    public NodoDoble(Polinomio dato, NodoDoble siguiente, NodoDoble anteiror){
+    public NodoDoble(Polinomio dato, NodoDoble siguiente, NodoDoble anterior){
         this.dato = dato;
         this.siguiente = siguiente;
         this.anterior = anterior;
     }
     
-    public NodoDoble(Polinomio dato){
-        this.dato = dato;
-        this.siguiente = null;
-        this.anterior = null;
+        public NodoDoble(Polinomio dato){
+        this(dato, null, null);
     }
     
-    public NodoDoble(){
-        
-    }
+    public NodoDoble(){}
 
     public NodoDoble getSiguiente() {
         return siguiente;

@@ -5,78 +5,85 @@ import Modelo.Polinomio;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.VBox;
+import javafx.embed.swing.SwingFXUtils;
 import org.scilab.forge.jlatexmath.TeXConstants;
 import org.scilab.forge.jlatexmath.TeXFormula;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
 public class PolinomiosController {
+    public VBox polinomiosView;
     private ListaDoble lista = new ListaDoble();
     private ListaDoble listaDos = new ListaDoble();
     private Polinomio pol1 = new Polinomio();
 
-    @FXML
-    private TextField x6;
+    //Polinomio 1
+    @FXML private TextField x6;
+    @FXML private TextField x5;
+    @FXML private TextField x4;
+    @FXML private TextField x3;
+    @FXML private TextField x2;
+    @FXML private TextField x1;
+    @FXML private TextField x0;
 
-    @FXML
-    private TextField x5;
+    //Polinomio 2
+    @FXML private TextField y6;
+    @FXML private TextField y5;
+    @FXML private TextField y4;
+    @FXML private TextField y3;
+    @FXML private TextField y2;
+    @FXML private TextField y1;
+    @FXML private TextField y0;
 
-    @FXML
-    private TextField x4;
+    @FXML private ImageView result;
 
-    @FXML
-    private TextField x3;
+    public void guardarPolinomio(){
 
-    @FXML
-    private TextField x2;
+        String[] coeficientesX = {
+                x6.getText(),
+                x5.getText(),
+                x4.getText(),
+                x3.getText(),
+                x2.getText(),
+                x1.getText(),
+                x0.getText()
+        };
 
-    @FXML
-    private TextField x1;
+        String[] coeficientesY = {
+                y6.getText(),
+                y5.getText(),
+                y4.getText(),
+                y3.getText(),
+                y2.getText(),
+                y1.getText(),
+                y0.getText()
+        };
 
-    @FXML
-    private TextField x0;
+        copiarCoeficientes(coeficientesX, lista);
+        copiarCoeficientes(coeficientesY, listaDos);
+    }
 
-    @FXML
-    private TextField y6;
+    private void copiarCoeficientes(String[] coeficientes, ListaDoble lista) {
+        for (int i = 0; i < coeficientes.length; i++) {
+            String s = coeficientes[i];
 
-    @FXML
-    private TextField y5;
+            int coeficiente = Integer.parseInt( s.isBlank() ? "0" : s );
 
-    @FXML
-    private TextField y4;
-
-    @FXML
-    private TextField y3;
-
-    @FXML
-    private TextField y2;
-
-    @FXML
-    private TextField y1;
-
-    @FXML
-    private TextField y0;
-
-    public void guardarPoli(ActionEvent actionEvent){
-        lista.insertaInicio(new Polinomio(Integer.parseInt(x6.getText()),6));
-        lista.insertaInicio(new Polinomio(Integer.parseInt(x5.getText()),5));
-        lista.insertaInicio(new Polinomio(Integer.parseInt(x4.getText()),4));
-        lista.insertaInicio(new Polinomio(Integer.parseInt(x3.getText()),3));
-        lista.insertaInicio(new Polinomio(Integer.parseInt(x2.getText()),2));
-        lista.insertaInicio(new Polinomio(Integer.parseInt(x1.getText()),1));
-        lista.insertaInicio(new Polinomio(Integer.parseInt(x0.getText()),0));
-
-        listaDos.insertaInicio(new Polinomio(Integer.parseInt(y6.getText()),6));
-        listaDos.insertaInicio(new Polinomio(Integer.parseInt(y5.getText()),5));
-        listaDos.insertaInicio(new Polinomio(Integer.parseInt(y4.getText()),4));
-        listaDos.insertaInicio(new Polinomio(Integer.parseInt(y3.getText()),3));
-        listaDos.insertaInicio(new Polinomio(Integer.parseInt(y2.getText()),2));
-        listaDos.insertaInicio(new Polinomio(Integer.parseInt(y1.getText()),1));
-        listaDos.insertaInicio(new Polinomio(Integer.parseInt(y0.getText()),0));
+            lista.insertarInicio(new Polinomio( coeficiente, i ));
+        }
     }
 
     public void onButtonClick(ActionEvent actionEvent){
+        guardarPolinomio();
         ListaDoble listaDoble = pol1.sumarPolinomios(lista, listaDos,7);
-        TeXFormula formula = new TeXFormula();
-        formula.createPNG(TeXConstants.STYLE_DISPLAY,200,"Example.png", java.awt.Color.WHITE, java.awt.Color.BLACK);
+        TeXFormula formula = new TeXFormula(listaDoble.imprimir());
+        BufferedImage image = (BufferedImage) formula.createBufferedImage(TeXConstants.STYLE_DISPLAY,200, Color.BLACK, Color.WHITE);
+        result.setImage(SwingFXUtils.toFXImage(image, null));
     }
 
     public void botonResta(ActionEvent actionEvent) {
@@ -96,11 +103,11 @@ public class PolinomiosController {
 
     public void botonLimpiar(ActionEvent actionEvent) {
        for(int i=0; i< lista.getCantidadElementos(); i++) {
-           lista.eliminaInicio();
+           lista.eliminarInicio();
        }
 
         for(int i=0; i< listaDos.getCantidadElementos(); i++) {
-            listaDos.eliminaInicio();
+            listaDos.eliminarInicio();
         }
 
         x1.setText("0");

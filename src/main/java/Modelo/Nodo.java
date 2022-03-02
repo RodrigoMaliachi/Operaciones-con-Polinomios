@@ -8,13 +8,10 @@ public class Nodo {
     protected Polinomio dato;
     protected Nodo siguiente;
     
-    public Nodo(){
-        
-    }
+    public Nodo(){}
     
     public Nodo(Polinomio dato){
-        this.dato = dato;
-        this.siguiente = null;
+        this(dato, null);
     }
     
     public Nodo(Polinomio dato,Nodo siguiente){
@@ -22,10 +19,8 @@ public class Nodo {
         this.siguiente = siguiente;
     }
 
-    //prueba3
-
     public Polinomio getDato(){
-        return this.dato;
+        return dato;
     }
     
     public void setDato(Polinomio dato){
@@ -33,7 +28,7 @@ public class Nodo {
     }
     
     public Nodo getSiguiente(){
-        return this.siguiente;
+        return siguiente;
     }
     
     public void setSiguiente(Nodo siguiente){

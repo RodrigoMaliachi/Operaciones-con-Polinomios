@@ -15,28 +15,28 @@ public abstract class ListaD extends Listaa{
     
     @Override
     public String imprimir(){
-        String impresion="";
+        StringBuilder impresion = new StringBuilder();
         Nodo actual = inicio;
         while(actual != null){
-            if(actual==ultimo){
-                impresion+=actual.getDato();
-            }else{
-                impresion+=actual.getDato()+"+";
-            }
+            if (actual == ultimo)
+                impresion.append(actual.getDato());
+            else
+                impresion.append(actual.getDato()).append("+");
+
             actual = actual.getSiguiente();
         }
-        return impresion;
+        return impresion.toString();
     }
     
     
     public void imprimirAlReves(){
         NodoDoble actual = ultimo;
-        while(actual!=null){
-            if(actual == inicio){
+        while (actual!=null){
+            if (actual == inicio)
                 System.out.println(actual.getDato());
-            }else{
+            else
                 System.out.println(actual.getDato()+"->");
-            }
+
             actual = actual.getAnterior();
         }
     }

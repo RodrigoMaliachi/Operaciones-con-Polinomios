@@ -1,7 +1,5 @@
 package Modelo;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Jonatan, Natali, Rodrigro, Angélica
@@ -12,8 +10,7 @@ public class Polinomio {
     private int exponente;
 
     public Polinomio(){
-        this.coeficiente=0;
-        this.exponente=0;
+        this(0,0);
     }
 
     public Polinomio(int coeficiente, int exponente){
@@ -39,15 +36,13 @@ public class Polinomio {
     
     @Override
     public String toString(){
-        if(exponente == 0){
-            return coeficiente+"";
-        }else{
-            return coeficiente+"x^{"+exponente+"}";
-        }
-        
+        if (exponente == 0)
+            return coeficiente + "";
+        else
+            return coeficiente + "x^" + exponente;
     }
 
-    public ListaDoble sumarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos,int n){
+    public ListaDoble sumarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos, int n){
         int [] coeficientePolinomioUno = new int [n];
         int [] coeficientePolinomioDos = new int [n];
         ListaDoble auxLista = new ListaDoble();
@@ -72,7 +67,7 @@ public class Polinomio {
             int acumulador;
             acumulador = coeficientePolinomioDos[i] + coeficientePolinomioUno[i];
             if(acumulador != 0){
-                auxLista.insertaInicio(new Polinomio(acumulador,i));
+                auxLista.insertarInicio(new Polinomio(acumulador,i));
             }
         }
 
@@ -105,7 +100,7 @@ public class Polinomio {
             int acumulador;
             acumulador = -1*(coeficientePolinomioDos[i]) + coeficientePolinomioUno[i];
             if(acumulador != 0){
-                auxLista.insertaInicio(new Polinomio(acumulador,i));
+                auxLista.insertarInicio(new Polinomio(acumulador,i));
             }
         }
 
@@ -123,7 +118,7 @@ public class Polinomio {
             while(poliDos != null){
                 int coeficien = poliUno.getDato().getCoeficiente()*poliDos.getDato().getCoeficiente();
                 int exponen = poliUno.getDato().getExponente()+poliDos.getDato().getExponente();
-                pol1.insertaInicio(new Polinomio(coeficien,exponen));
+                pol1.insertarInicio(new Polinomio(coeficien,exponen));
                 poliDos = poliDos.siguiente;
             }
             poliUno = poliUno.siguiente;
@@ -142,7 +137,7 @@ public class Polinomio {
         while(poliUno != null){
               int coeficien = poliUno.getDato().getCoeficiente()*escalar;
               int exponen = poliUno.getDato().getExponente();
-              pol1.insertaInicio(new Polinomio(coeficien,exponen));
+              pol1.insertarInicio(new Polinomio(coeficien,exponen));
             poliUno = poliUno.siguiente;
         }
         pol1.imprimir();
@@ -167,7 +162,7 @@ public class Polinomio {
         
         for(int i= 0; i<n ;i++){
             if(coeficientePolUno[i] != 0){
-                pol1.insertaInicio(new Polinomio(coeficientePolUno[i],i));
+                pol1.insertarInicio(new Polinomio(coeficientePolUno[i],i));
             }
         }  
          
@@ -187,5 +182,4 @@ public class Polinomio {
         }
         return ver;
     }
-
 }
