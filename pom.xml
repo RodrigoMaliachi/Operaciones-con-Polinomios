@@ -75,7 +75,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.uady.operacionesconpolinomios/com.uady.operacionesconpolinomios.HelloApplication
+                                com.uady.operacionesconpolinomios/com.uady.operacionesconpolinomios.Main
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

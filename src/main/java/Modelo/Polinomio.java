@@ -76,7 +76,8 @@ public class Polinomio {
             }
         }
 
-        return auxLista.imprimir();
+        auxLista.imprimir();
+        return auxLista;
     }
 
     public ListaDoble restarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos,int n){
