@@ -1,162 +1,109 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.uady.operacionesconpolinomios.PolinomiosController">
-   <children>
-      <Button layoutX="23.0" layoutY="345.0" mnemonicParsing="false" onAction="#onButtonClick" text="Sumar" />
-      <Button layoutX="122.0" layoutY="345.0" mnemonicParsing="false" onAction="#botonResta" text="Restar" />
-      <Button layoutX="212.0" layoutY="345.0" mnemonicParsing="false" onAction="#botonMultiplicar" text="Multiplicar" />
-      <Button layoutX="310.0" layoutY="345.0" mnemonicParsing="false" onAction="#botonEscalar" text="Multiplicar por escalar" />
-      <TextField layoutX="23.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" fx:id="x6" />
-      <TextField layoutX="104.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" fx:id="x5" />
-      <TextField layoutX="185.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" fx:id="x4" />
-      <TextField layoutX="264.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" fx:id="x3" />
-      <TextField layoutX="346.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" fx:id="x2" />
-      <TextField layoutX="443.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" fx:id="x1" />
-      <Label layoutX="54.0" layoutY="44.0" prefHeight="39.0" prefWidth="31.0" text="x">
+<VBox alignment="CENTER_LEFT" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.uady.operacionesconpolinomios.PolinomiosController">
+   <Label text="Polinomio 1">
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+      </padding>
+   </Label>
+   <HBox alignment="CENTER_RIGHT">
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+      </padding>
+      <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x6"/>
+      <Label prefHeight="39.0" text="x⁶+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="377.0" layoutY="44.0" prefHeight="39.0" prefWidth="31.0" text="x">
+      <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x5"/>
+      <Label prefHeight="39.0" text="x⁵+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="295.0" layoutY="44.0" prefHeight="39.0" prefWidth="31.0" text="x">
+      <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x4"/>
+      <Label prefHeight="39.0" text="x⁴+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="217.0" layoutY="44.0" prefHeight="39.0" prefWidth="31.0" text="x">
+      <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x3"/>
+      <Label prefHeight="39.0" text="x³+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="135.0" layoutY="43.0" prefHeight="39.0" prefWidth="31.0" text="x">
+      <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x2"/>
+      <Label prefHeight="39.0" text="x²+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="75.0" layoutY="44.0" text="+">
+      <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x1"/>
+      <Label text="x+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="156.0" layoutY="44.0" text="+">
+      <TextField alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0" fx:id="x0"/>
+   </HBox>
+   <Label layoutX="10.0" layoutY="10.0" text="Polinomio 2">
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+      </padding>
+   </Label>
+   <HBox alignment="CENTER_RIGHT" layoutX="10.0" layoutY="46.0">
+      <padding>
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0"/>
+      </padding>
+      <TextField fx:id="y6" alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0"/>
+      <Label prefHeight="39.0" text="x⁶+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="238.0" layoutY="43.0" text="+">
+      <TextField fx:id="y5" alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0"/>
+      <Label prefHeight="39.0" text="x⁵+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="316.0" layoutY="44.0" text="+">
+      <TextField fx:id="y4" alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0"/>
+      <Label prefHeight="39.0" text="x⁴+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="408.0" layoutY="45.0" text="+">
+      <TextField fx:id="y3" alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0"/>
+      <Label prefHeight="39.0" text="x³+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <Label layoutX="66.0" layoutY="41.0" text="6" />
-      <Label layoutX="389.0" layoutY="43.0" text="2" />
-      <Label layoutX="307.0" layoutY="43.0" text="3" />
-      <Label layoutX="229.0" layoutY="43.0" text="4" />
-      <Label layoutX="147.0" layoutY="42.0" text="5" />
-      <Label layoutX="475.0" layoutY="45.0" prefHeight="39.0" prefWidth="31.0" text="x">
+      <TextField fx:id="y2" alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0"/>
+      <Label prefHeight="39.0" text="x²+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <TextField layoutX="536.0" layoutY="51.0" prefHeight="26.0" prefWidth="31.0" text="0" fx:id="x0" />
-      <Label layoutX="496.0" layoutY="45.0" text="+">
+      <TextField fx:id="y1" alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0"/>
+      <Label text="x+">
          <font>
-            <Font size="27.0" />
+            <Font size="18.0"/>
          </font>
       </Label>
-      <TextField fx:id="y6" layoutX="23.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField fx:id="y5" layoutX="104.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField fx:id="y4" layoutX="185.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField fx:id="y3" layoutX="264.0" layoutY="137.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField fx:id="y2" layoutX="346.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <TextField fx:id="y1" layoutX="443.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <Label layoutX="54.0" layoutY="129.0" prefHeight="39.0" prefWidth="31.0" text="x">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="377.0" layoutY="129.0" prefHeight="39.0" prefWidth="31.0" text="x">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="295.0" layoutY="129.0" prefHeight="39.0" prefWidth="31.0" text="x">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="217.0" layoutY="129.0" prefHeight="39.0" prefWidth="31.0" text="x">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="135.0" layoutY="128.0" prefHeight="39.0" prefWidth="31.0" text="x">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="75.0" layoutY="129.0" text="+">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="156.0" layoutY="129.0" text="+">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="238.0" layoutY="128.0" text="+">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="316.0" layoutY="129.0" text="+">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="408.0" layoutY="130.0" text="+">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Label layoutX="66.0" layoutY="126.0" text="6" />
-      <Label layoutX="389.0" layoutY="128.0" text="2" />
-      <Label layoutX="307.0" layoutY="128.0" text="3" />
-      <Label layoutX="229.0" layoutY="128.0" text="4" />
-      <Label layoutX="147.0" layoutY="127.0" text="5" />
-      <Label layoutX="475.0" layoutY="130.0" prefHeight="39.0" prefWidth="31.0" text="x">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <TextField fx:id="y0" layoutX="536.0" layoutY="136.0" prefHeight="26.0" prefWidth="31.0" text="0" />
-      <Label layoutX="496.0" layoutY="130.0" text="+">
-         <font>
-            <Font size="27.0" />
-         </font>
-      </Label>
-      <Button layoutX="489.0" layoutY="345.0" mnemonicParsing="false" onAction="#botonLimpiar" text="Limpiar" />
-      <Label layoutX="14.0" layoutY="14.0" prefHeight="18.0" prefWidth="80.0" text="Polinomio 1" />
-      <Label layoutX="16.0" layoutY="102.0" text="Polinomio 2" />
-      <Button layoutX="239.0" layoutY="294.0" mnemonicParsing="false" onAction="#guardarPoli" text="Guardar polinomios" />
-   </children>
-</AnchorPane>
+      <TextField fx:id="y0" alignment="CENTER_RIGHT" prefWidth="50.0" promptText="0"/>
+   </HBox>
+   <HBox alignment="CENTER">
+      <ImageView fitHeight="200.0" fitWidth="400.0" nodeOrientation="INHERIT" pickOnBounds="true"
+                 preserveRatio="true"/>
+   </HBox>
+</VBox>

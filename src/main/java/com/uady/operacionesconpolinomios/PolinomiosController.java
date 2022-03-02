@@ -14,43 +14,43 @@ public class PolinomiosController {
     private Polinomio pol1 = new Polinomio();
 
     @FXML
-    private TextField x1;
-
-    @FXML
-    private TextField x2;
-
-    @FXML
-    private TextField x3;
-
-    @FXML
-    private TextField x4;
+    private TextField x6;
 
     @FXML
     private TextField x5;
 
     @FXML
-    private TextField x6;
+    private TextField x4;
+
+    @FXML
+    private TextField x3;
+
+    @FXML
+    private TextField x2;
+
+    @FXML
+    private TextField x1;
 
     @FXML
     private TextField x0;
 
     @FXML
-    private TextField y1;
-
-    @FXML
-    private TextField y2;
-
-    @FXML
-    private TextField y3;
-
-    @FXML
-    private TextField y4;
+    private TextField y6;
 
     @FXML
     private TextField y5;
 
     @FXML
-    private TextField y6;
+    private TextField y4;
+
+    @FXML
+    private TextField y3;
+
+    @FXML
+    private TextField y2;
+
+    @FXML
+    private TextField y1;
 
     @FXML
     private TextField y0;
@@ -119,6 +119,4 @@ public class PolinomiosController {
         y0.setText("0");
 
     }
-
-
 }
