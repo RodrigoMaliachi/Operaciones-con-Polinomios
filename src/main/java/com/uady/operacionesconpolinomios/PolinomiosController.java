@@ -69,12 +69,13 @@ public class PolinomiosController {
     }
 
     private void copiarCoeficientes(String[] coeficientes, ListaDoble lista) {
+        int x = 6;
         for (int i = 0; i < coeficientes.length; i++) {
             String s = coeficientes[i];
 
             int coeficiente = Integer.parseInt( s.isBlank() ? "0" : s );
 
-            lista.insertarInicio(new Polinomio( coeficiente, i ));
+            lista.insertarInicio(new Polinomio( coeficiente, x-i ));
         }
     }
 
