@@ -108,7 +108,7 @@ public class Polinomio {
         return auxLista;
     }
 
-    public void multiplicarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos){
+    public ListaDoble multiplicarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos){
         NodoDoble poliUno, poliDos;
         ListaDoble pol1 = new ListaDoble();
         
@@ -125,11 +125,12 @@ public class Polinomio {
         }
         pol1.ordenarLista();
         pol1.imprimir();
-        System.out.println("\nSimplificado-------------------------------");
-        SimplificarPolinomio(pol1,13);
+        //System.out.println("\nSimplificado-------------------------------");
+        pol1=SimplificarPolinomio(pol1,13);
+        return pol1;
     }
 
-    public void multiplicarEscalarPolinomios(ListaDoble polinomioUno, int escalar){
+    public ListaDoble multiplicarEscalarPolinomios(ListaDoble polinomioUno, int escalar){
         NodoDoble poliUno;
         ListaDoble pol1 = new ListaDoble();
 
@@ -141,11 +142,12 @@ public class Polinomio {
             poliUno = poliUno.siguiente;
         }
         pol1.imprimir();
+        return pol1;
 
     }
 
     
-    public void SimplificarPolinomio(ListaDoble polinomioUno,int n){
+    public ListaDoble SimplificarPolinomio(ListaDoble polinomioUno,int n){
          NodoDoble poliUno;
          ListaDoble pol1 = new ListaDoble();
          int [] coeficientePolUno = new int [n];
@@ -166,7 +168,7 @@ public class Polinomio {
             }
         }  
          
-         pol1.imprimir();
+         return pol1;
     }
     
     public boolean verificar(ListaDoble polinomioUno,int x){

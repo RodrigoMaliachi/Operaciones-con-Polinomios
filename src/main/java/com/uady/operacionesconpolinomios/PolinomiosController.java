@@ -1,5 +1,6 @@
 package com.uady.operacionesconpolinomios;
 
+import Modelo.ListaD;
 import Modelo.ListaDoble;
 import Modelo.Polinomio;
 import javafx.event.ActionEvent;
@@ -85,18 +86,19 @@ public class PolinomiosController {
     }
 
     public void botonResta(ActionEvent actionEvent) {
-        pol1.restarPolinomios(lista, listaDos,7);
-
+        guardarPolinomio();
+        ListaDoble resultado=pol1.restarPolinomios(lista, listaDos,7);
+        TeXFormula formula = new TeXFormula(resultado.imprimir());
+        BufferedImage image = (BufferedImage) formula.createBufferedImage(TeXConstants.STYLE_DISPLAY,200, Color.BLACK, Color.WHITE);
+        result.setImage(SwingFXUtils.toFXImage(image, null));
     }
 
     public void botonMultiplicar(ActionEvent actionEvent) {
-        pol1.multiplicarPolinomios(lista, listaDos);
-
-    }
-
-    public void botonEscalar(ActionEvent actionEvent) {
-        pol1.multiplicarEscalarPolinomios(lista, 7);
-
+        guardarPolinomio();
+        ListaDoble resultado = pol1.multiplicarPolinomios(lista, listaDos);
+        TeXFormula formula = new TeXFormula(resultado.imprimir());
+        BufferedImage image = (BufferedImage) formula.createBufferedImage(TeXConstants.STYLE_DISPLAY,200, Color.BLACK, Color.WHITE);
+        result.setImage(SwingFXUtils.toFXImage(image, null));
     }
 
     public void botonLimpiar(ActionEvent actionEvent) {
