@@ -21,7 +21,7 @@ public abstract class Listaa {
     public boolean vacio(){
         return inicio == null;
     }
-    
+    //
     public String imprimir(){
         StringBuilder impresion = new StringBuilder();
         Nodo actual = inicio;
