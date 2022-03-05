@@ -138,8 +138,10 @@ public class Polinomio {
         while(poliUno != null){
               int coeficien = poliUno.getDato().getCoeficiente()*escalar;
               int exponen = poliUno.getDato().getExponente();
-              pol1.insertarInicio(new Polinomio(coeficien,exponen));
-            poliUno = poliUno.siguiente;
+              if(coeficien != 0){
+                  pol1.insertarInicio(new Polinomio(coeficien,exponen));
+              }
+              poliUno = poliUno.siguiente;
         }
         pol1.imprimir();
         return pol1;

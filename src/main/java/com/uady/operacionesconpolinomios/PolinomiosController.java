@@ -124,6 +124,7 @@ public class PolinomiosController {
         y5.setText("");
         y6.setText("");
         y0.setText("");
+        result.setImage(null);
 
     }
 }
