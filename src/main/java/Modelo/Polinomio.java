@@ -128,7 +128,7 @@ public class Polinomio {
         System.out.println("\nSimplificado-------------------------------");
         SimplificarPolinomio(pol1,13);
     }
-
+//w
     public void multiplicarEscalarPolinomios(ListaDoble polinomioUno, int escalar){
         NodoDoble poliUno;
         ListaDoble pol1 = new ListaDoble();
