@@ -1,143 +1,212 @@
 package Modelo;
 
-import java.util.ArrayList;
-
 /**
  *
  * @author Jonatan, Natali, Rodrigro, Angélica
  */
+@SuppressWarnings( "unused" )
+public class Polinomio extends ListaDoble {
+    private Termino mayor;
 
-public class Polinomio {
-    private int coeficiente;
-    private int exponente;
-
-    public Polinomio(){
-        this.coeficiente=0;
-        this.exponente=0;
+    public Polinomio( Termino mayor ) {
+        this.mayor = mayor;
     }
 
-    public Polinomio(int coeficiente, int exponente){
-        this.coeficiente = coeficiente;
-        this.exponente = exponente;
+    public void insertarTermino( Termino termino ) {
+
+        if ( termino.coeficiente == 0 )
+            return;
+
+        if ( vacio() ) {
+            mayor = termino;
+            return;
+        }
+
+        Termino actual = mayor;
+        Termino anterior = null;
+
+        while ( actual != null && actual.exponente > termino.exponente ) {
+            anterior = actual;
+            actual = actual.siguiente;
+        }
+
+        if ( actual != null ) {
+            if ( actual.exponente == termino.exponente )
+                actual.coeficiente = termino.coeficiente;
+            else {
+                termino.siguiente = actual;
+                actual.anterior = termino;
+
+                if ( anterior != null ) {
+                    termino.anterior = anterior;
+                    anterior.siguiente = termino;
+                }
+            }
+        } else if ( anterior != null ){
+            anterior.siguiente = termino;
+        }
     }
 
-    public int getCoeficiente() {
-        return coeficiente;
-    }
-
-    public void setCoeficiente(int coeficiente) {
-        this.coeficiente = coeficiente;
-    }
-
-    public int getExponente() {
-        return exponente;
-    }
-
-    public void setExponente(int exponente) {
-        this.exponente = exponente;
-    }
-    
     @Override
-    public String toString(){
-        if(exponente == 0){
-            return coeficiente+"";
-        }else{
-            return coeficiente+"x^"+exponente;
-        }
-        
-    }
-    
-    public ListaDoble sumarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos,int n){
-        int [] coeficientePolinomioUno = new int [n];
-        int [] coeficientePolinomioDos = new int [n];
-        ListaDoble auxLista = new ListaDoble();
-        
-        for(int i= 0; i<n ;i++){
-            coeficientePolinomioDos[i] = 0;
-            coeficientePolinomioUno[i] = 0;
-        }
-        
-        NodoDoble actual = polinomioUno.inicio;
-        while(actual != null){
-            coeficientePolinomioUno[actual.getDato().getExponente()] = actual.getDato().getCoeficiente();
-            actual = actual.siguiente;
-        }
-        actual = polinomioDos.inicio;
-        while(actual != null){
-            coeficientePolinomioDos[actual.getDato().getExponente()] = actual.getDato().getCoeficiente();
-            actual = actual.siguiente;
-        }
-        
-        for(int i= 0; i<n ;i++){
-            int acumulador;
-            acumulador = coeficientePolinomioDos[i] + coeficientePolinomioUno[i];
-            if(acumulador != 0){
-                auxLista.insertaInicio(new Polinomio(acumulador,i));
-            }
-        }  
-        
-        auxLista.imprimir();  
-        return auxLista;
-    }
-    
-    public void multiplicarPolinomios(ListaDoble polinomioUno, ListaDoble polinomioDos){
-        NodoDoble poliUno, poliDos;
-        ListaDoble pol1 = new ListaDoble();
-        
-        poliUno = polinomioUno.inicio;
-        while(poliUno != null){
-            poliDos = polinomioDos.inicio;
-            while(poliDos != null){
-                int coeficien = poliUno.getDato().getCoeficiente()*poliDos.getDato().getCoeficiente();
-                int exponen = poliUno.getDato().getExponente()+poliDos.getDato().getExponente();
-                pol1.insertaInicio(new Polinomio(coeficien,exponen));
-                poliDos = poliDos.siguiente;
-            }
-            poliUno = poliUno.siguiente;
-        }
-        pol1.ordenarLista();
-        pol1.imprimir();
-        System.out.println("\nSimplificado-------------------------------");
-        SimplificarPolinomio(pol1,13);
-         
-    }
-    
-    public void SimplificarPolinomio(ListaDoble polinomioUno,int n){
-         NodoDoble poliUno;
-         ListaDoble pol1 = new ListaDoble();
-         int [] coeficientePolUno = new int [n];
-         
-         for(int i= 0; i<n ;i++){
-            coeficientePolUno[i] = 0;
-         }
-         
-        poliUno = polinomioUno.inicio;
-        while(poliUno != null){
-            coeficientePolUno[poliUno.getDato().getExponente()] = coeficientePolUno[poliUno.getDato().getExponente()] + poliUno.getDato().getCoeficiente();
-            poliUno = poliUno.siguiente;
-        }
-        
-        for(int i= 0; i<n ;i++){
-            if(coeficientePolUno[i] != 0){
-                pol1.insertaInicio(new Polinomio(coeficientePolUno[i],i));
-            }
-        }  
-         
-         pol1.imprimir();
-    }
-    
-    public boolean verificar(ListaDoble polinomioUno,int x){
-        boolean ver = false;
-        NodoDoble actual = polinomioUno.inicio;
-        while(actual != null){
-            if(actual.getDato().exponente == x){
-                ver = true;
-                actual = null;
-            }else{
-                actual = actual.getSiguiente();
-            }
-        }
-        return ver;
+    public boolean vacio() {
+        return mayor == null;
     }
 
+    @Override
+    public String toString() {
+
+        StringBuilder s = new StringBuilder();
+
+        Termino actual = mayor;
+
+        do {
+
+            if ( actual.coeficiente == 0 ) {
+                actual = actual.siguiente;
+                continue;
+            }
+
+            if ( actual.coeficiente < 0 || actual == mayor )
+                s.append( actual.coeficiente );
+            else
+                s.append( "+" ).append( actual.coeficiente );
+
+            if ( actual.exponente > 0 )
+                s.append( "x" );
+
+            if ( actual.exponente > 1 )
+                s.append( "^" ).append( actual.exponente );
+
+            actual = actual.siguiente;
+        } while ( actual != null );
+
+        return s.toString();
+    }
+
+    public void sumarPolinomio( Polinomio polinomio) {
+        mayor = sumarPolinomios( this, polinomio ).mayor;
+    }
+
+    public void restarPolinomio( Polinomio polinomio ) {
+        mayor = restarPolinomios( this, polinomio ).mayor;
+    }
+
+    public void multiplicarPorPolinomio( Polinomio polinomio ) {
+        mayor = multiplicarPolinomios( this, polinomio ).mayor;
+    }
+
+    public void multiplicarPorEscalar( int escalar ) {
+        mayor = multiplicarPolinomioPorEscalar( this, escalar ).mayor;
+    }
+
+    public static Polinomio sumarPolinomios( Polinomio ecuacion1, Polinomio ecuacion2 ) {
+
+        Termino termino1 = ecuacion1.mayor;
+        Termino termino2 = ecuacion2.mayor;
+
+        Termino actual = new Termino();
+        Polinomio resultado = new Polinomio( actual );
+
+        while ( termino1 != null && termino2 != null ) {
+
+            int compare = termino1.compareTo( termino2 );
+
+            if ( compare == 0 ) {
+
+                actual.coeficiente = termino1.coeficiente + termino2.coeficiente;
+                actual.exponente = termino1.exponente;
+
+                termino1 = termino1.siguiente;
+                termino2 = termino2.siguiente;
+
+            } else if ( compare > 0 ) {
+
+                actual.coeficiente = termino1.coeficiente;
+                actual.exponente = termino1.exponente;
+
+                termino1 = termino1.siguiente;
+
+            } else {
+
+                actual.coeficiente = termino2.coeficiente;
+                actual.exponente = termino2.exponente;
+
+                termino2 = termino2.siguiente;
+
+            }
+
+            actual.siguiente = new Termino( null, actual );
+            actual = actual.siguiente;
+
+        }
+
+        if ( termino1 != null )
+            actual.copyValues( termino1 );
+        else if ( termino2 != null )
+            actual.copyValues( termino2 );
+        else {
+            Termino temp = actual.anterior;
+            temp.siguiente = null;
+        }
+
+        System.out.println( resultado );
+        return resultado;
+    }
+
+    public static Polinomio restarPolinomios( Polinomio ecuacion1, Polinomio ecuacion2 ) {
+        return sumarPolinomios( ecuacion1, multiplicarPolinomioPorEscalar( ecuacion2, -1 ) );
+    }
+
+    public static Polinomio multiplicarPolinomios( Polinomio ecuacion1, Polinomio ecuacion2 ) {
+
+        Polinomio resultado = new Polinomio( null );
+
+        Termino actual1 = ecuacion1.mayor;
+        Termino actual2 = ecuacion2.mayor;
+
+        while ( actual1 != null && actual2 != null) {
+
+            Termino termino = new Termino();
+            Polinomio sumando = new Polinomio( termino );
+
+            while ( actual2 != null ) {
+                
+                termino.coeficiente = actual1.coeficiente * actual2.coeficiente;
+                termino.exponente = actual1.exponente + actual2.exponente;
+
+                actual2 = actual2.siguiente;
+
+                termino.siguiente = new Termino( null, termino);
+                termino = termino.siguiente;
+
+            }
+
+            resultado.sumarPolinomio( sumando );
+
+            actual1 = actual1.siguiente;
+            actual2 = ecuacion2.mayor;
+        }
+
+        return resultado;
+    }
+//w
+    public static Polinomio multiplicarPolinomioPorEscalar( Polinomio polinomio, int escalar ) {
+
+        Termino actual = polinomio.mayor;
+
+        while ( actual != null ) {
+            actual.coeficiente *= escalar;
+            actual = ( actual.siguiente );
+        }
+
+        return polinomio;
+    }
+
+    public Termino getMayor() {
+        return mayor;
+    }
+
+    public void setMayor( Termino mayor ) {
+        this.mayor = mayor;
+    }
 }
