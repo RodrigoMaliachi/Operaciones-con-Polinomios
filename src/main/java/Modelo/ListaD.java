@@ -4,7 +4,8 @@ package Modelo;
  *
  * @author Jonatan, Natali, Rodrigro, Angélica
  */
-public abstract class ListaD extends Listaa{
+@SuppressWarnings( "unused" )
+public abstract class ListaD extends Lista {
     protected NodoDoble inicio;
     protected NodoDoble ultimo;
     
@@ -21,7 +22,7 @@ public abstract class ListaD extends Listaa{
             if (actual == ultimo)
                 impresion.append(actual.getDato());
             else
-                impresion.append(actual.getDato()).append("+");
+                impresion.append(actual.getDato()).append(" -> ");
 
             actual = actual.getSiguiente();
         }
@@ -35,10 +36,26 @@ public abstract class ListaD extends Listaa{
             if (actual == inicio)
                 System.out.println(actual.getDato());
             else
-                System.out.println(actual.getDato()+"->");
+                System.out.println(actual.getDato()+" -> ");
 
             actual = actual.getAnterior();
         }
     }
-    
+
+    @Override
+    public NodoDoble getInicio() {
+        return inicio;
+    }
+
+    public void setInicio( NodoDoble inicio ) {
+        this.inicio = inicio;
+    }
+
+    public NodoDoble getUltimo() {
+        return ultimo;
+    }
+
+    public void setUltimo( NodoDoble ultimo ) {
+        this.ultimo = ultimo;
+    }
 }

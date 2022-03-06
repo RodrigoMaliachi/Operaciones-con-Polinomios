@@ -4,19 +4,13 @@ package Modelo;
  *
  * @author Jonatan, Natali, Rodrigro, Angélica
  */
+@SuppressWarnings( "unused" )
 public class ListaDoble extends ListaD{
-    private int cantidadElementos;
-
-    public int getCantidadElementos() {
-        return cantidadElementos;
-    }
-
-    public void setCantidadElementos(int cantidadElementos) {
-        this.cantidadElementos = cantidadElementos;
-    }
+    
+    protected int longitud;
     
     @Override
-    public void insertarInicio(Polinomio dato) {
+    public void insertarInicio(Object dato) {
         if (vacio())
             inicio = ultimo = new NodoDoble(dato);
         else {
@@ -24,11 +18,11 @@ public class ListaDoble extends ListaD{
             inicio.setAnterior(nuevo);
             inicio = nuevo;
         }
-        cantidadElementos++;
+        longitud++;
     }
 
     @Override
-    public void insertarFinal(Polinomio dato) {
+    public void insertarFinal(Object dato) {
         if (vacio())
             inicio = ultimo = new NodoDoble(dato);
         else {
@@ -36,133 +30,100 @@ public class ListaDoble extends ListaD{
             ultimo.setSiguiente(nuevo);
             ultimo = nuevo;
         }
+        longitud++;
     }
     
-    public void insertaAntes(Polinomio dato, int posicion){
-        NodoDoble actual = inicio;
-        int i=0;
-        while(actual != null && i != posicion){
-            actual = actual.siguiente;
-            i++;
+    public void insertaAntes(Object dato, int posicion){
+
+        if ( posicion < 0 || posicion >= longitud )
+            return;
+
+        if ( posicion == 0 ) {
+            insertarInicio( dato );
+            return;
         }
-        NodoDoble nuevo = new NodoDoble(dato,actual,actual.getAnterior());
-        NodoDoble tempo = actual.getAnterior();
-        actual.anterior = nuevo;
-        tempo.setSiguiente(nuevo);
+
+        NodoDoble actual = inicio.siguiente;
+
+        while ( --posicion > 0 )
+            actual = actual.siguiente;
+
+        if ( actual != null ) {
+            NodoDoble anterior = actual.anterior;
+            anterior.siguiente = new NodoDoble( dato, actual, anterior );
+            actual.anterior = anterior.siguiente;
+            longitud++;
+        }
     }
     
-    public void insertaDespues(Polinomio dato, int posicion){
-        NodoDoble actual = inicio;
-        int i=0;
-        while (actual != null && i != posicion){
-            actual = actual.siguiente;
-            i++;
+    public void insertarDespues(Object dato, int posicion){
+
+        if ( posicion < 0 || posicion >= longitud )
+            return;
+
+        if ( posicion == longitud - 1 ) {
+            insertarFinal( dato );
+            return;
         }
-        NodoDoble nuevo = new NodoDoble(dato,actual.siguiente,actual);
-        NodoDoble tempo = actual.siguiente;
-        actual.siguiente = nuevo;
-        tempo.setAnterior(nuevo);
+
+        NodoDoble actual = inicio;
+
+        while ( posicion-- > 0 )
+            actual = actual.siguiente;
+
+        if ( actual != null ) {
+            NodoDoble siguiente = actual.siguiente;
+            siguiente.anterior = new NodoDoble( dato, siguiente, actual );
+            actual.siguiente = siguiente.anterior;
+            longitud++;
+        }
     }
     
     @Override
     public Object eliminarInicio() {
-        Object eliminado = null;
-        if (vacio())
-             System.out.println("La lista está vacía");
 
-        else {
-            eliminado = inicio.getDato();
-
-            if (inicio == ultimo)
-                 inicio = ultimo = null;
-            else {
-                 inicio = inicio.getSiguiente();
-                 inicio.setAnterior(null);
-            }
+        if ( vacio() ) {
+            System.out.println( "La lista está vacía" );
+            return null;
         }
+
+        Object eliminado = inicio.getDato();
+
+        if ( inicio == ultimo )
+             inicio = ultimo = null;
+        else {
+             inicio = inicio.siguiente;
+             inicio.anterior = null;
+        }
+
+        longitud--;
+
         return eliminado;
     }
 
     @Override
     public Object eliminarFinal() {
-         Object eliminado = null;
 
-         if (vacio())
-             System.out.println("La lista está vacía");
-         else {
-             if (inicio == ultimo) {
-                 eliminado = inicio.getDato();
-                 inicio = ultimo = null;
-             } else {
-                 eliminado = ultimo.getDato();
-                 ultimo = ultimo.getAnterior();
-                 ultimo.setSiguiente(null);
-             }
+         if ( vacio() ) {
+             System.out.println( "La lista está vacía" );
+             return null;
          }
+
+         Object eliminado = inicio.getDato();
+
+         if ( inicio == ultimo )
+             inicio = ultimo = null;
+         else {
+             ultimo = ultimo.anterior;
+             ultimo.siguiente = null;
+         }
+
+         longitud--;
+
          return eliminado;
     }
-    
-    @Override
-    public void ordenarLista() {
-        Polinomio auxDato;
-        if (vacio())
-            System.out.println("La lista está vacía");
 
-        else {
-
-            if (inicio == ultimo)
-                System.out.println("La lista está ordenada");
-            else {
-                NodoDoble actual = inicio;
-
-                while(actual != null) {
-
-                    NodoDoble p = actual.getSiguiente();
-
-                    while (p != null) {
-
-                        if (actual.getDato().getExponente() < p.getDato().getExponente()) {
-                            auxDato = p.getDato();
-                            p.setDato(actual.getDato());
-                            actual.setDato(auxDato);
-                        }
-                        p = p.siguiente;
-                    }
-
-                    actual = actual.siguiente;
-                }
-            }
-        }
-    }
-    
-    public static void main(String[] args){
-        ListaDoble lista = new ListaDoble();
-        lista.insertarInicio(new Polinomio(6,2));
-        lista.insertarInicio(new Polinomio(9,4));
-        lista.insertarInicio(new Polinomio(-3,5));
-        lista.insertarInicio(new Polinomio(2,6));
-        lista.insertarInicio(new Polinomio(4,1));
-        lista.insertarInicio(new Polinomio(15,0));
-        lista.insertarInicio(new Polinomio(-25,3));
-        lista.ordenarLista();
-
-        ListaDoble lista2 = new ListaDoble();
-        lista2.insertarInicio(new Polinomio(3,2));
-        lista2.insertarInicio(new Polinomio(2,6));
-        lista2.insertarInicio(new Polinomio(4,3));
-        lista2.insertarInicio(new Polinomio(4,5));
-        lista2.insertarInicio(new Polinomio(4,0));
-        lista2.insertarInicio(new Polinomio(9,1));
-        lista2.insertarInicio(new Polinomio(10,4));
-        lista2.ordenarLista();
-        System.out.println("pol1-----------------------------------");
-        lista.imprimir();
-        System.out.println("\nPol2-----------------------------------");
-        lista2.imprimir();
-        System.out.println("\nSuma-----------------------------------");
-        Polinomio pol1 = new Polinomio();
-        pol1.sumarPolinomios(lista, lista2,7);
-        System.out.println("\nMultiplicacion-----------------------------------");
-        pol1.multiplicarPolinomios(lista, lista2);
+    public int getLongitud() {
+        return longitud;
     }
 }
