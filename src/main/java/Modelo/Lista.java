@@ -4,20 +4,29 @@ package Modelo;
  *
  * @author Jonatan, Natali, Rodrigro, Angélica
  */
-public abstract class Listaa {
+@SuppressWarnings( "unused" )
+public abstract class Lista {
     protected Nodo inicio;
-    protected Nodo ultimo;
     protected String nombre;
     
-    public Listaa(){
+    public Lista(){
         this("lista");
     }
     
-    public Listaa(String nombre){
-        this.nombre = nombre;
-        this.inicio = this.ultimo = null;
+    public Lista( String nombre){
+        this( null, nombre );
     }
-    
+
+    public Lista( Nodo inicio ){
+        this.inicio = inicio;
+        nombre = "Lista";
+    }
+
+    public Lista( Nodo inicio, String nombre ) {
+        this.inicio = inicio;
+        this.nombre = nombre;
+    }
+
     public boolean vacio(){
         return inicio == null;
     }
@@ -26,21 +35,20 @@ public abstract class Listaa {
         StringBuilder impresion = new StringBuilder();
         Nodo actual = inicio;
         while (actual != null){
-            if (actual == ultimo)
+            if (actual.siguiente == null)
                 impresion.append(actual.getDato());
             else
-                impresion.append(actual.getDato()).append("+");
+                impresion.append(actual.getDato()).append(" -> ");
 
             actual = actual.getSiguiente();
         }
         return impresion.toString();
     }
     
-    public abstract void insertarInicio(Polinomio dato);
-    public abstract void insertarFinal (Polinomio dato);
+    public abstract void insertarInicio(Object dato);
+    public abstract void insertarFinal (Object dato);
     public abstract Object eliminarInicio();
     public abstract Object eliminarFinal();
-    public abstract void ordenarLista();
     
     public Nodo getInicio(){
         return this.inicio;
@@ -48,14 +56,6 @@ public abstract class Listaa {
     
     public void setInicio(Nodo inicio){
         this.inicio = inicio;
-    }
-
-    public Nodo getUltimo() {
-        return ultimo;
-    }
-
-    public void setUltimo(Nodo ultimo) {
-        this.ultimo = ultimo;
     }
 
     public String getNombre() {

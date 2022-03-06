@@ -1,8 +1,7 @@
 package com.uady.operacionesconpolinomios;
 
-import Modelo.ListaD;
-import Modelo.ListaDoble;
 import Modelo.Polinomio;
+import Modelo.Termino;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
@@ -17,9 +16,8 @@ import java.awt.image.BufferedImage;
 
 public class PolinomiosController {
     public VBox polinomiosView;
-    private ListaDoble lista = new ListaDoble();
-    private ListaDoble listaDos = new ListaDoble();
-    private Polinomio pol1 = new Polinomio();
+    private final Polinomio ecuacionX = new Polinomio( null );
+    private final Polinomio ecuacionY = new Polinomio( null );
 
     //Polinomio 1
     @FXML private TextField x6;
@@ -63,52 +61,54 @@ public class PolinomiosController {
                 y0.getText()
         };
 
-        copiarCoeficientes(coeficientesX, lista);
-        copiarCoeficientes(coeficientesY, listaDos);
+        copiarCoeficientes(coeficientesX, ecuacionX );
+        copiarCoeficientes(coeficientesY, ecuacionY );
     }
 
-    private void copiarCoeficientes(String[] coeficientes, ListaDoble lista) {
+    private void copiarCoeficientes(String[] coeficientes, Polinomio polinomio) {
         for (int i = 0; i < coeficientes.length; i++) {
             String s = coeficientes[i];
 
             int coeficiente = Integer.parseInt( s.isBlank() ? "0" : s );
 
-            lista.insertarInicio(new Polinomio( coeficiente, 6-i ));
+            polinomio.insertarTermino( new Termino( coeficiente, 6 - i ) );
         }
     }
 
     public void onButtonClick(ActionEvent actionEvent){
+
+        ecuacionX.setMayor( null );
+        ecuacionY.setMayor( null );
         guardarPolinomio();
-        ListaDoble listaDoble = pol1.sumarPolinomios(lista, listaDos,7);
-        TeXFormula formula = new TeXFormula(listaDoble.imprimir());
+
+        TeXFormula formula = new TeXFormula( Polinomio.sumarPolinomios( ecuacionX, ecuacionY ).toString() );
         BufferedImage image = (BufferedImage) formula.createBufferedImage(TeXConstants.STYLE_DISPLAY,200, Color.BLACK, Color.WHITE);
         result.setImage(SwingFXUtils.toFXImage(image, null));
     }
 
     public void botonResta(ActionEvent actionEvent) {
+
+        ecuacionX.setMayor( null );
+        ecuacionY.setMayor( null );
         guardarPolinomio();
-        ListaDoble resultado=pol1.restarPolinomios(lista, listaDos,7);
-        TeXFormula formula = new TeXFormula(resultado.imprimir());
+
+        TeXFormula formula = new TeXFormula( Polinomio.restarPolinomios( ecuacionX, ecuacionY ).toString() );
         BufferedImage image = (BufferedImage) formula.createBufferedImage(TeXConstants.STYLE_DISPLAY,200, Color.BLACK, Color.WHITE);
         result.setImage(SwingFXUtils.toFXImage(image, null));
     }
 
     public void botonMultiplicar(ActionEvent actionEvent) {
+
+        ecuacionX.setMayor( null );
+        ecuacionY.setMayor( null );
         guardarPolinomio();
-        ListaDoble resultado = pol1.multiplicarPolinomios(lista, listaDos);
-        TeXFormula formula = new TeXFormula(resultado.imprimir());
+
+        TeXFormula formula = new TeXFormula( Polinomio.multiplicarPolinomios( ecuacionX, ecuacionY ).toString() );
         BufferedImage image = (BufferedImage) formula.createBufferedImage(TeXConstants.STYLE_DISPLAY,200, Color.BLACK, Color.WHITE);
         result.setImage(SwingFXUtils.toFXImage(image, null));
     }
 
     public void botonLimpiar(ActionEvent actionEvent) {
-       for(int i=0; i< lista.getCantidadElementos(); i++) {
-           lista.eliminarInicio();
-       }
-
-        for(int i=0; i< listaDos.getCantidadElementos(); i++) {
-            listaDos.eliminarInicio();
-        }
 
         x1.setText("");
         x2.setText("");

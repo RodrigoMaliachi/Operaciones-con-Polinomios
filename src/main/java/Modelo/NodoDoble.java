@@ -4,21 +4,22 @@ package Modelo;
  *
  * @author Jonatan, Natali, Rodrigro, Angélica
  */
+@SuppressWarnings( "unused" )
 public class NodoDoble extends Nodo {
     protected NodoDoble siguiente;
     protected NodoDoble anterior;
-    
-    public NodoDoble(Polinomio dato, NodoDoble siguiente, NodoDoble anterior){
+
+    public NodoDoble(){ this(null);}
+
+    public NodoDoble(Object dato){
+        this(dato, null, null);
+    }
+
+    public NodoDoble(Object dato, NodoDoble siguiente, NodoDoble anterior){
         this.dato = dato;
         this.siguiente = siguiente;
         this.anterior = anterior;
     }
-    
-        public NodoDoble(Polinomio dato){
-        this(dato, null, null);
-    }
-    
-    public NodoDoble(){}
 
     public NodoDoble getSiguiente() {
         return siguiente;
