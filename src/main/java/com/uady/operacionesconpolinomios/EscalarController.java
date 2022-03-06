@@ -1,7 +1,7 @@
 package com.uady.operacionesconpolinomios;
 
-import Modelo.ListaDoble;
 import Modelo.Polinomio;
+import Modelo.Termino;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -24,10 +24,9 @@ public class EscalarController {
     @FXML private TextField x0;
     @FXML private TextField escalar;
     @FXML private ImageView result;
+    @FXML public VBox escalarView;
 
-    public VBox escalarView;
-    private ListaDoble lista = new ListaDoble();
-    private Polinomio pol1 = new Polinomio();
+    private final Polinomio polinomio = new Polinomio( null );
     private int esc;
 
     public void guardarPolinomio(){
@@ -44,33 +43,33 @@ public class EscalarController {
 
         esc = Integer.parseInt(escalar.getText());
 
-        copiarCoeficientes(coeficientesX, lista);
+        copiarCoeficientes(coeficientesX, polinomio);
 
     }
 
-    private void copiarCoeficientes(String[] coeficientes, ListaDoble lista) {
+    private void copiarCoeficientes(String[] coeficientes, Polinomio polinomio) {
         for (int i = 0; i < coeficientes.length; i++) {
             String s = coeficientes[i];
 
             int coeficiente = Integer.parseInt( s.isBlank() ? "0" : s );
 
-            lista.insertarInicio(new Polinomio( coeficiente, 6-i ));
+            polinomio.insertarTermino( new Termino( coeficiente, 6 - i ) );
         }
     }
 
     @FXML
-    private void botonMultiplicarEscalar(ActionEvent actionEvent){
+    private void botonMultiplicarEscalar(ActionEvent actionEvent) {
+
+        polinomio.setMayor( null );
         guardarPolinomio();
-        ListaDoble resultado = pol1.multiplicarEscalarPolinomios(lista, esc);
-        TeXFormula formula = new TeXFormula(resultado.imprimir());
+        polinomio.multiplicarPorEscalar( esc );
+
+        TeXFormula formula = new TeXFormula( polinomio.toString() );
         BufferedImage image = (BufferedImage) formula.createBufferedImage(TeXConstants.STYLE_DISPLAY,200, Color.BLACK, Color.WHITE);
         result.setImage(SwingFXUtils.toFXImage(image, null));
     }
 
     public void botonLimpiar(ActionEvent actionEvent) {
-        for(int i=0; i< lista.getCantidadElementos(); i++) {
-            lista.eliminarInicio();
-        }
 
         x1.setText("");
         x2.setText("");
@@ -82,6 +81,5 @@ public class EscalarController {
         escalar.setText("");
 
         result.setImage(null);
-
     }
 }
