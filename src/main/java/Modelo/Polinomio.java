@@ -189,7 +189,7 @@ public class Polinomio extends ListaDoble {
 
         return resultado;
     }
-
+//w
     public static Polinomio multiplicarPolinomioPorEscalar( Polinomio polinomio, int escalar ) {
 
         Termino actual = polinomio.mayor;

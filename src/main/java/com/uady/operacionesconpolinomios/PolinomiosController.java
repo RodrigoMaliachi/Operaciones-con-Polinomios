@@ -66,12 +66,13 @@ public class PolinomiosController {
     }
 
     private void copiarCoeficientes(String[] coeficientes, Polinomio polinomio) {
+        int x = 6;
         for (int i = 0; i < coeficientes.length; i++) {
             String s = coeficientes[i];
 
             int coeficiente = Integer.parseInt( s.isBlank() ? "0" : s );
 
-            polinomio.insertarTermino( new Termino( coeficiente, 6 - i ) );
+            polinomio.insertarTermino( new Termino( coeficiente, x - i ) );
         }
     }
 
